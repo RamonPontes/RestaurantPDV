@@ -4,17 +4,19 @@ import { UserResponseDTO } from "./user.types"
 
 export interface OrderResponseDTO {
     id: number
-    // tab: TabResponseDTO,
+    tab: TabResponseDTO,
     user: UserResponseDTO,
-    products: ProductsData[],
+    products: Record<string, ProductResponseDTO>,
     value: number,
+    status: OrderStatusEnum,
     created_at: number,
     updated_at: number,
     finished_at: number
 }
 
-interface ProductsData {
-    amount: number,
-    product: ProductResponseDTO,
-    note: string
+
+export enum OrderStatusEnum {
+    CREATED,
+    PREPARING,
+    FINISHED
 }
