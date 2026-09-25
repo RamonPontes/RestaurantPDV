@@ -4,9 +4,9 @@ import { UserResponseDTO } from "./user.types"
 
 export interface OrderResponseDTO {
     id: number
-    tab: TabResponseDTO,
+    tab?: TabResponseDTO,
     user: UserResponseDTO,
-    products: Record<string, ProductResponseDTO>,
+    products: Map<ProductResponseDTO, number>,
     value: number,
     status: OrderStatusEnum,
     created_at: number,

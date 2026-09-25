@@ -10,3 +10,9 @@ export interface TabResponseDTO {
     updated_at: number,
     finished_at: number
 }
+
+export interface RegisterTabRequestDTO {
+    consumerName: string,
+    consumerTelephone: string,
+    tabNumber: number
+}
