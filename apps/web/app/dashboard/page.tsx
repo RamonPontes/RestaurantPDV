@@ -1,7 +1,10 @@
 'use client'
 
-import { CashierDashboard } from "@/components/CashierDashboard";
+import { TabsDashboard } from "@/components/TabsDashboard";
 import { getMe } from "@/services/user.service"
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@workspace/ui/components/navigation-menu";
+import { Separator } from "@workspace/ui/components/separator";
+import Link from "next/link";
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 
@@ -16,7 +19,7 @@ export default function Page() {
 
             try {
                 const response = await getMe();
-                console.log(response)
+
                 if (storedRole !== response.role.toString()) {
                     localStorage.removeItem("role");
                     localStorage.removeItem("accessToken");
@@ -27,7 +30,6 @@ export default function Page() {
 
                 setRole(storedRole);
             } catch (error) {
-                console.log(error)
                 router.push("/")
             }
         }
@@ -36,6 +38,19 @@ export default function Page() {
     }, [router])
 
     return (
-        <CashierDashboard />
+        <>
+            <header className="w-full overflow-x-hidden py-3 flex justify-center items-center">
+                <NavigationMenu>
+                    <NavigationMenuList>
+                        <NavigationMenuLink>Comandas</NavigationMenuLink>
+                        <NavigationMenuLink>Funcionarios</NavigationMenuLink>
+                        <NavigationMenuLink>Produtos</NavigationMenuLink>
+                        <NavigationMenuLink>Estatisticas</NavigationMenuLink>
+                    </NavigationMenuList>
+                </NavigationMenu>
+            </header>
+            <Separator className="w-full" />
+            <TabsDashboard />
+        </>
     )
 }

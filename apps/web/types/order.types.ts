@@ -9,9 +9,9 @@ export interface OrderResponseDTO {
     products: Map<ProductResponseDTO, number>,
     value: number,
     status: OrderStatusEnum,
-    created_at: number,
-    updated_at: number,
-    finished_at: number
+    createdAt: number,
+    updatedAt: number,
+    finishedAt: number
 }
 
 

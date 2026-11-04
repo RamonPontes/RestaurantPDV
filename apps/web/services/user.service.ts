@@ -9,8 +9,6 @@ export async function getMe(): Promise<UserResponseDTO> {
         }
     );
 
-    console.log(response)
-
     if (response.data === null) {
         throw new Error(
             "Erro ao realizar requisição"

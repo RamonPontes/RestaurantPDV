@@ -1,4 +1,4 @@
-import { RegisterTabRequestDTO, TabResponseDTO } from "@/types/tab.types";
+import { FinishTabRequestDTO, RegisterTabRequestDTO, TabResponseDTO } from "@/types/tab.types";
 import { apiRequest } from "./api.service";
 
 export async function registerNewTab(
@@ -33,4 +33,24 @@ export async function getAllTabs(): Promise<TabResponseDTO[]> {
     }
 
     return response.data;
+}
+
+export async function finishTab(
+    id: number,
+    data: FinishTabRequestDTO
+) {
+    const response = await apiRequest<TabResponseDTO[]>(
+        `/tab/${id}`,
+        {
+            method: "DELETE",
+            body: JSON.stringify(data)
+        }
+    );
+
+    if (response.status <= 200 && response.status >= 299) {
+        console.log(response.status)
+        throw new Error(
+            "Erro ao realizar requisição"
+        );
+    }
 }

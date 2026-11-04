@@ -24,7 +24,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cn("antialiased", fontSans.variable, "font-mono", jetbrainsMono.variable)}
     >
-      <body>
+      <body className="overflow-x-hidden">
         <ThemeProvider>{children}</ThemeProvider>
         <Toaster position="top-right" duration={4000}  />
       </body>

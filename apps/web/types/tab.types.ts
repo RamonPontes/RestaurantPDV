@@ -6,13 +6,26 @@ export interface TabResponseDTO {
     consumer: ConsumerResponseDTO,
     value: number,
     orders?: OrderResponseDTO[],
-    created_at: number,
-    updated_at: number,
-    finished_at: number
+    serviceCharge: boolean,
+    paymentMethod: PaymentMethods,
+    createdAt: number,
+    updatedAt: number,
+    finishedAt: number
 }
 
 export interface RegisterTabRequestDTO {
     consumerName: string,
     consumerTelephone: string,
     tabNumber: number
+}
+
+export interface FinishTabRequestDTO {
+    serviceCharge: boolean,
+    paymentMethod: PaymentMethods
+}
+
+export enum PaymentMethods {
+    PIX,
+    CARTAO,
+    DINHEIRO
 }

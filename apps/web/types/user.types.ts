@@ -2,8 +2,8 @@ export interface UserResponseDTO {
     id: number,
     name: string,
     role: UserRoleEnum,
-    created_at: string,
-    updated_at: string
+    createdAt: string,
+    updatedAt: string
 }
 
 export enum UserRoleEnum {
